@@ -13,7 +13,7 @@ const Header = (props) => {
                 {/* <h1>Trask Tracker</h1> */}
                 {/* <h1 style={headerStyle}>{props.title}</h1> */}
                 <h1>{props.title}</h1>
-                <Button bgColor='pink' text='Hello' onClick={handleOnClick}/>
+                <Button bgColor='black' text='Add' onClick={handleOnClick}/>
                 {/* <Button bgColor='yellow' text='Hii'/>
                 <Button text='Good'/> */}
             </header>
