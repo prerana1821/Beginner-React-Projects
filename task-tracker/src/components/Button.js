@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-const Button = ({ bgColor, text }) => {
+const Button = ({ bgColor, text, onClick }) => {
 
-    const handleClick = (e) => {
-        return console.log('Clicked', e);
-    }
+    // const handleClick = (e) => {
+    //     return console.log('Clicked', e);
+    // }
 
     return (
-        <button onClick={handleClick} style={{ backgroundColor: bgColor }} className="btn">{text}</button>
+        <button onClick={onClick} style={{ backgroundColor: bgColor }} className="btn">{text}</button>
     )
 }
 
@@ -20,6 +20,7 @@ Button.defaultProps = {
 Button.propTypes = {
     bgColor: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
 }
 
 
