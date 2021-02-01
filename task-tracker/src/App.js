@@ -2,39 +2,55 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 
-
 function App() {
-  
-    const [tasks, settasks] = useState([
-        {
-            id: 1,
-            text: 'Learn React',
-            day: 'Jan 31st at 12:00pm',
-            reminder: true,
-        },
-        {
-            id: 2,
-            text: 'Learn JS',
-            day: 'Jan 11st at 4:00pm',
-            reminder: true,
-        },
-        {
-            id: 3,
-            text: 'Make JS Projects',
-            day: 'Jan 21st at 7:00pm',
-            reminder: true,
-        }
-    ])
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      text: "Learn React",
+      day: "Jan 31st at 12:00pm",
+      reminder: true,
+    },
+    {
+      id: 2,
+      text: "Learn JS",
+      day: "Feb 11st at 4:00pm",
+      reminder: true,
+    },
+    {
+      id: 3,
+      text: "Make JS Projects",
+      day: "June 21st at 7:00pm",
+      reminder: true,
+    },
+  ]);
+
+  // Delete Task
+  const deteleTask = (id) => {
+    // console.log("Delete", id);
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const toggleReminder = (id) => {
+    // console.log(id);
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
 
   return (
     <div className="container">
-      <Header title='Task Tracker'/>
+      <Header title="Task Tracker" />
       {/* <Header title={1}/> */}
-      <Tasks tasks={tasks}/>
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} onDelete={deteleTask} onToggle={toggleReminder} />
+      ) : (
+        "No Tasks Avaiable"
+      )}
     </div>
   );
 }
-
 
 // Class Based Component for App (Also need to import react for class based comp, not required for functional components)
 // class App extends React.Component {
@@ -54,6 +70,3 @@ export default App;
 //      <h2>Hello {bool ? 'Yes': 'No'}</h2>
 //    </>
 //  );
-
-
-
