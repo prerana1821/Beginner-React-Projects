@@ -1,8 +1,12 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 
 function App() {
+
+  const [showAddTask, setShowAddTask] = useState(false);
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -20,9 +24,17 @@ function App() {
       id: 3,
       text: "Make JS Projects",
       day: "June 21st at 7:00pm",
-      reminder: true,
+      reminder: false,
     },
   ]);
+
+  // Submit Task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 1000) + 1;
+    console.log(task);
+    const newTask = { id, ...task };
+    setTasks([...tasks, newTask]);
+  };
 
   // Delete Task
   const deteleTask = (id) => {
@@ -41,8 +53,9 @@ function App() {
 
   return (
     <div className="container">
-      <Header title="Task Tracker" />
+      <Header title="Task Tracker" onShowAdd={() => setShowAddTask(!showAddTask)} />
       {/* <Header title={1}/> */}
+      <AddTask onAddTask={addTask} />
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deteleTask} onToggle={toggleReminder} />
       ) : (

@@ -1,19 +1,20 @@
 import Button from "./Button";
 import PropTypes from 'prop-types'
 
-const Header = (props) => {
+const Header = ({ title, onShowAdd }) => {
 
-    const handleOnClick = () => {
-        return console.log('Hello Click');
-    }
+    // const handleOnClick = () => {
+    //     return console.log('Hello Click');
+    // }
 
     return (
         <div>
             <header className="header">
                 {/* <h1>Trask Tracker</h1> */}
                 {/* <h1 style={headerStyle}>{props.title}</h1> */}
-                <h1>{props.title}</h1>
-                <Button bgColor='black' text='Add' onClick={handleOnClick}/>
+                <h1>{title}</h1>
+                <Button bgColor='black' text='Add' onClick={onShowAdd} />
+                {/* <Button bgColor='black' text='Add' onClick={handleOnClick}/> */}
                 {/* <Button bgColor='yellow' text='Hii'/>
                 <Button text='Good'/> */}
             </header>
@@ -41,7 +42,7 @@ Header.propTypes = {
 
 // If props are not passed
 Header.defaultProps = {
-    title:'Task Tracking App'
+    title: 'Task Tracking App'
 }
 
 // CSS in JS

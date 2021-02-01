@@ -20,7 +20,7 @@ Button.defaultProps = {
 Button.propTypes = {
     bgColor: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    // onClick: PropTypes.func.isRequired
 }
 
 
