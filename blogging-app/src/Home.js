@@ -1,13 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
 
-    const [blogs, setBlogs] = useState([
-        { title: 'My new website', body: 'lorem ipsum...', author: 'Prerana', id: 1 },
-        { title: 'Welcome party!', body: 'lorem ipsum...', author: 'Siddhi', id: 2 },
-        { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Prerana', id: 3 }
-    ]);
+    // const [name, setName] = useState('Prerana');
+
+    const [blogs, setBlogs] = useState(null);
+    var [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState(false);
+
+    // useEffect(() => {
+    //    console.log('Use Effect Ran');
+    // //    console.log(blogs);
+    // },[name]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            fetch('http://localhost:9000/blogs')
+                .then(res => { 
+                    // console.log(res);
+                    if (!res.ok) {
+                       throw Error('Sorry, could not fetch data, Please try again later!'); 
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    // console.log(data);
+                    // isPending = false;
+                    setIsPending(false);
+                    setError(null);
+                    setBlogs(data);
+                }).catch(error => {
+                    // console.log(error);
+                    // console.log(error.message);
+                    setIsPending(false);
+                    setError(error.message);
+                });
+        }, 1000);
+    }, []);
 
     const handleDelete = (id) => {
         setBlogs(blogs.filter(blog => blog.id !== id));
@@ -15,8 +45,12 @@ const Home = () => {
 
     return (
         <div className="home">
-            <BlogList blogs={blogs} title='All blogs' handleDelete={handleDelete} />
+            {error && error}
+            {isPending && <div>Loading...</div>}
+            {blogs && <BlogList blogs={blogs} title='All blogs' handleDelete={handleDelete} />}
             {/* <BlogList blogs={blogs.filter(blog => blog.author === 'Prerana')} title="Prerana's blogs" /> */}
+            {/* <button onClick={() => setName('Siddhi')}>Change name</button> */}
+            {/* <p>{name}</p> */}
         </div>
     );
 }
