@@ -80,18 +80,6 @@ body {
   justify-content: space-between;
 }
 
-.btn-delete {
-  background: none;
-  cursor: pointer;
-  border: 1px solid #f50057;
-  outline: none;
-  padding: 0.5rem;
-  color: #fff;
-  color: #000;
-  border-radius: 1.5rem;
-  font-size: 0.9rem;
-}
-
 /* blog details page */
 .blog-details h2 {
   font-size: 20px;
@@ -102,12 +90,16 @@ body {
   margin: 20px 0;
 }
 .blog-details button {
-  background: #f1356d;
-  color: #fff;
-  border: 0;
-  padding: 8px;
-  border-radius: 8px;
+  color: #f1356d;
+  background: none;
   cursor: pointer;
+  border: 1px solid #f50057;
+  outline: none;
+  padding: 0.5rem;
+  padding-left: 0.95rem;
+  padding-right: 0.95rem;
+  border-radius: 1.5rem;
+  font-size: 0.9rem;
 }
 
 /* create new blog form */
