@@ -103,23 +103,25 @@ body {
 }
 
 /* create new blog form */
-.create {
+.create,.search {
   max-width: 400px;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
 }
-.create label {
+.create label,.search label {
   text-align: left;
   display: block;
 }
-.create h1 {
+.create h1,.search h1 {
   font-size: 27px;
   color: #f1356d;
   margin-bottom: 30px;
+  margin-top: 2rem;
 }
 .create input,
 .create textarea,
-.create select {
+.create select,
+.search input {
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -129,7 +131,7 @@ body {
   border-radius: 3px;
   font-size: 1rem;
 }
-.create button {
+.create button,.search button {
   background: #f1356d;
   color: #fff;
   margin: 2rem 0;
