@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand';
+}
+
+.main {
+    height: 90vh;
+    margin: 2rem 5%;
+    max-width: 90%;
+    background-color: #f7f7fc;
+    background-color: #f0f8ff;
+    border-radius: 1rem;
+    box-shadow: 7.81px 7.81px 15px #ebebef, -7.81px -7.81px 15px #ffffff;
+    box-shadow: 7.81px 7.81px 15px #e4ecf2, -8px -2px 11px 0px hsl(0deg 0% 100%);
+}
+
+.head-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.head-img {
+    width: auto;
+    margin: 1.5rem 0rem;
+    transition: max-width 1s, min-width 1s;
+}
+
+.head-img-expanded {
+    min-width: 230px;
+    max-width: 350px;
+}
+
+.head-img-contracted {
+    max-width: 170px;
+    min-width: 150px;
+}
+
+.head-text {
+    color: #090256;
+    transition: font-size 1s;
+}
+
+input::placeholder {
+    color: #090256;
+}
+
+.head-text-expanded {
+    font-size: 36px;
+}
+
+.head-text-contracted {
+    font-size: 24px;
+}
+
+.search i {
+    position: absolute;
+}
+
+.search {
+    text-align: center;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.icon {
+    padding: 12px;
+    padding-top: 16px;
+    color: #00ffff;
+    min-width: 50px;
+    text-align: center;
+}
+
+.search-input {
+    outline: none;
+    padding: 12px;
+    text-align: center;
+    min-width: 20%;
+    border: none;
+    font-size: larger;
+    background: #f7f7fc;
+    border-radius: 0.5rem;
+    box-shadow: 7.81px 7.81px 15px #ebebef, -7.81px -7.81px 15px #ffffff;
+    background: #f0f8ff;
+    box-shadow: 10.51px 10.51px 12px #ebf3fa, -10.51px -10.51px 12px #f5fdff;
+}
+
+.search-input:hover,
+.search-input:active,
+.search-input:focus {
+    box-shadow: inset 7.81px 7.81px 5px #ebebef,
+        inset -7.81px -7.81px 15px #ffffff;
+    box-shadow: inset 10.51px 10.51px 12px #ebf3fa,
+        inset -10.51px -10.51px 12px #f5fdff;
+}
+
+/* 
+.head-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.head-image {
+    width: auto;
+    transition: max-width 1s, min-width 1s;
+}
+
+.head-image-expanded {
+    min-width: 230px;
+    max-width: 250px;
+}
+
+.head-image-contracted {
+    max-width: 60px;
+    min-width: 40px;
+}
+
+.head-text {
+    margin: 5px 0 15px 0;
+    transition: font-size 1s;
+}
+
+.head-text-expanded {
+    font-size: 36px;
+}
+
+.head-text-contracted {
+    font-size: 12px;
+} */
