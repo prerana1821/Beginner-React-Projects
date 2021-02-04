@@ -3,20 +3,30 @@ import Header from "./components/Header";
 import Search from './components/Search';
 import React from 'react';
 import { useState } from "react";
+import ResultContainer from './components/ResultContainer';
+
+const nameGen = require('@rstacruz/startup-name-generator');
 
 function App() {
 
-const [active, setActive] = useState(true);
+  const [active, setActive] = useState(true);
+  const [name, setName] = useState([]);
 
-const handleOnChange = (value) => {
-  setActive(value.length > 0 ? false : true);
-}
+  const handleOnChange = (value) => {
+    let name = nameGen(value);
+    setName(value ? name : []);
+    // console.log(name);
+    // setActive(value.length > 0 ? false : true);
+    // setActive(!(value.length > 0));
+    setActive(!value);
+  }
 
   return (
     <div className="App">
       <div className='main'>
-      <Header active={active} />
-      <Search handleOnChange={handleOnChange} />
+        <Header active={ active } />
+        <Search handleOnChange={ handleOnChange } />
+        <ResultContainer names={ name } />
       </div>
     </div>
   );

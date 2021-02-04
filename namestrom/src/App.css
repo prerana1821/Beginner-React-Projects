@@ -8,7 +8,7 @@
 }
 
 .main {
-    height: 90vh;
+    min-height: 90vh;
     margin: 2rem 5%;
     max-width: 90%;
     background-color: #f7f7fc;
@@ -98,6 +98,31 @@ input::placeholder {
         inset -10.51px -10.51px 12px #f5fdff;
 }
 
+.result-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.result-container a {
+    text-decoration: none;
+    color: #000;
+}
+
+.name-container {
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 3px 6px 7px #c2e0ff, -6px -6px 10px 0px #ffffff;
+    margin: 0.8rem 1.2rem;
+    transition: 1ms ease;
+}
+
+.name-container:hover {
+    transition: 1ms ease;
+    box-shadow: inset 10.51px 10.51px 12px #ebf3fa,
+        inset -10.51px -10.51px 12px #f5fdff;
+}
 /* 
 .head-container {
     display: flex;
