@@ -1,0 +1,39 @@
+.todo {
+  background-color: #282d4f;
+  padding: 1.2rem 1rem;
+  border-radius: 0.5rem;
+  margin: 1.3rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.btn-delete {
+  display: flex;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.img-delete {
+  padding: 10px;
+  width: 38px;
+}
+
+.btn-done {
+  display: flex;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.img-done {
+  padding: 10px;
+  width: 38px;
+}
+
+.done {
+  text-decoration-line: line-through;
+}

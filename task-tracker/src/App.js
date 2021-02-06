@@ -4,7 +4,6 @@ import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 
 function App() {
-
   const [showAddTask, setShowAddTask] = useState(false);
 
   const [tasks, setTasks] = useState([
@@ -45,17 +44,22 @@ function App() {
   const toggleReminder = (id) => {
     // console.log(id);
     setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
-      )
+      tasks.map((task) => {
+        console.log(task);
+        return task.id === id ? { ...task, reminder: !task.reminder } : task;
+      })
     );
   };
 
   return (
-    <div className="container">
-      <Header title="Task Tracker" onShowAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+    <div className='container'>
+      <Header
+        title='Task Tracker'
+        onShowAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
       {/* <Header title={1}/> */}
-      { showAddTask && <AddTask onAddTask={addTask} />}
+      {showAddTask && <AddTask onAddTask={addTask} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deteleTask} onToggle={toggleReminder} />
       ) : (

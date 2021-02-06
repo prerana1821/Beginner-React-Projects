@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import AddTask from "./components/AddTask";
+import { useState } from "react";
+import Todos from "./components/Todos";
 
 function App() {
+
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      text: "Learn React",
+      imp: 'Least Important',
+      done: true,
+    },
+    {
+      id: 2,
+      text: "Learn JS",
+      imp: 'Important',
+      done: true,
+    },
+    {
+      id: 3,
+      text: "Make JS Projects",
+      imp: 'Necessary',
+      done: false,
+    },
+  ]);
+
+  const handleDone = (id) => {
+    setTodos(todos.map((todo) => {
+      return todo.id === id ? { ...todo, done: !todo.done } : todo;
+    }));
+  }
+
+  const handleDelete = (id) => {
+    setTodos(todos.filter((todo) => {
+      return todo.id !== id;
+    }));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Header />
+      <AddTask />
+      <Todos listTodos={ todos } handleDone={ handleDone } handleDelete={ handleDelete } />
     </div>
   );
 }
