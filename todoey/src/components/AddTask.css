@@ -1,0 +1,59 @@
+.add-task {
+  margin: 1rem;
+}
+
+.add-task-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-task-form label {
+  font-size: larger;
+}
+
+.add-task-form input {
+  background-color: var(--primary-color);
+  outline: none;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  margin: 1rem;
+  color: #fff;
+}
+
+input::placeholder {
+  color: var(--secondary-txt-color);
+}
+select {
+  background-color: var(--primary-color);
+  outline: none;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  margin: 1rem;
+  color: var(--secondary-txt-color);
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+}
+
+select * {
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+  border: none;
+}
+
+.btn-submit-task {
+  background-color: var(--secondary-color);
+  outline: none;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  margin: 1rem;
+  text-align: center;
+  color: var(--bg-color);
+  cursor: pointer;
+}

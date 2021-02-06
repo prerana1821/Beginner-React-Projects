@@ -11,6 +11,7 @@
   --bg-color: #0f1228;
   --primary-color: #282d4f;
   --secondary-color: #23eaa4;
+  --secondary-txt-color: #7c84ac;
 }
 
 body {
@@ -19,8 +20,8 @@ body {
 }
 
 .App {
-  margin: 2rem 25%;
-  max-width: 50%;
+  margin: 2rem 30%;
+  max-width: 40%;
 }
 
 .btn {
@@ -32,4 +33,11 @@ body {
   font-size: medium;
   cursor: pointer;
   border-radius: 2rem;
+}
+
+@media screen and (max-width: 700px) {
+  .App {
+    margin: 2rem 10%;
+    max-width: 80%;
+  }
 }

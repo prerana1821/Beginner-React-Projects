@@ -7,6 +7,15 @@
   justify-content: space-between;
 }
 
+small {
+  color: var(--secondday-txt-color);
+}
+
+.todo-txt {
+  border-left: 3px solid var(--secondary-color);
+  padding-left: 1rem;
+}
+
 .todo-actions {
   display: flex;
   gap: 1rem;
