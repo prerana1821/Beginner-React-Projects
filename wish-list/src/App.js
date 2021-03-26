@@ -14,7 +14,7 @@ function App() {
 const WishList = () => {
 
   const [wishList, setWishList] = useState([]);
-  const [wish, setWish] = useState("");
+  const [newWish, setWish] = useState("");
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,9 +22,8 @@ const WishList = () => {
     (async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('api/wishes');
-        const data = response.data.wishes;
-        setWishList(data);
+        const { data: { wishes } } = await axios.get('api/wishes');
+        setWishList(wishes);
       } catch (error) {
         setIsError(true);
       } finally {
@@ -45,15 +44,15 @@ const WishList = () => {
   const handleInputWish = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.post('api/wishes', {
+      const { status, data: { wish } } = await axios.post('api/wishes', {
         wish: {
           id: uuid(),
-          name: wish
+          name: newWish
         }
       });
 
-      if (response.status === 201) {
-        setWishList([...wishList, response.data.wish]);
+      if (status === 201) {
+        setWishList((wishList) => wishList.concat(wish));
       }
       setWish("");
     } catch (error) {
@@ -69,7 +68,10 @@ const WishList = () => {
       <h1>WishList</h1>
 
       <div className="input">
-        <input type="text" className="input-txt" value={ wish } onChange={ (e) => setWish(e.target.value) } required />
+        <input type="text" className="input-txt" value={ newWish } onChange={ (e) => {
+          const { value } = e.target;
+          setWish(value)
+        } } required />
         <span className="flt-label">Your Wish</span>
       </div>
 
@@ -79,8 +81,8 @@ const WishList = () => {
       <h3>{ isLoading && 'Loading...' }</h3>
 
       <ul>
-        { wishList.map(wish => {
-          return <p key={ wish.id }>{ wish.name }</p>;
+        { wishList.map(({ id, name }) => {
+          return <p key={ id }>{ name }</p>;
         }) }
       </ul>
     </div>
