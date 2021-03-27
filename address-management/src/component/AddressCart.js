@@ -22,9 +22,9 @@ export const AddressCart = ({
   };
 
   const handleDelete = async (id) => {
-    const response = await axios.delete(`api/addresses/${id}`);
+    const { status } = await axios.delete(`api/addresses/${id}`);
 
-    if (response.status === 204) {
+    if (status === 204) {
       setAddresses(
         addresses.filter((address) => {
           return address.id !== id;

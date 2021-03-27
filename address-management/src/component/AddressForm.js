@@ -47,7 +47,10 @@ export const AddressForm = ({
 
     try {
       setMsg("Saving data to Server");
-      const response = await axios.post("api/addresses", {
+      const {
+        status,
+        data: { address: addressFromServer },
+      } = await axios.post("api/addresses", {
         address: {
           name: name,
           phonenumber: phoneNumber,
@@ -59,8 +62,8 @@ export const AddressForm = ({
         },
       });
 
-      if (response.status === 201) {
-        setAddresses([...addresses, response.data.address]);
+      if (status === 201) {
+        setAddresses([...addresses, addressFromServer]);
       }
       setName("");
       setPhoneNumber("");

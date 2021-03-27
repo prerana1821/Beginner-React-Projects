@@ -12,9 +12,8 @@ function App() {
     (async () => {
       try {
         setMsg("Loading...");
-        const response = await axios.get("api/addresses");
-        const data = response.data.addresses;
-        setAddresses(data);
+        const { data: addresses } = await axios.get("api/addresses");
+        setAddresses(addresses);
       } catch (error) {
         msg("Error");
       } finally {
