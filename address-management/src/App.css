@@ -1,3 +1,51 @@
 .App {
   text-align: center;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-info-para {
+  padding: 0.5rem 0;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.input {
+  position: relative;
+  max-width: max-content;
+}
+
+.flex-input {
+  display: flex;
+  margin: 1rem 0;
+  gap: 2rem;
+}
+
+.mg-1 {
+  margin: 1rem 0;
+}
+
+.address-form {
+  display: inline-block;
+}
+
+.input-select {
+  padding: 1rem;
+  font-size: medium;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+  display: block;
+  margin: 1rem;
+  outline: none;
+}
+.center {
+  justify-content: center;
+}
