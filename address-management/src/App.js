@@ -12,10 +12,12 @@ function App() {
     (async () => {
       try {
         setMsg("Loading...");
-        const { data: addresses } = await axios.get("api/addresses");
+        const {
+          data: { addresses },
+        } = await axios.get("api/addresses");
         setAddresses(addresses);
       } catch (error) {
-        msg("Error");
+        setMsg("Error");
       } finally {
         setMsg("");
       }
@@ -44,7 +46,6 @@ function App() {
         addresses={addresses}
         setAddresses={setAddresses}
         msg={msg}
-        setMsg={setMsg}
         setShowAddressForm={setShowAddressForm}
       />
     </div>

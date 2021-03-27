@@ -46,6 +46,19 @@
   margin: 1rem;
   outline: none;
 }
+
+.radio {
+  margin-left: 1rem;
+}
+
+.input-radio-label {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.input-radio {
+  margin: 1rem;
+}
 .center {
   justify-content: center;
 }

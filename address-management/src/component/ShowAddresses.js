@@ -3,7 +3,6 @@ export const ShowAddresses = ({
   addresses,
   setAddresses,
   msg,
-  setMsg,
   setShowAddressForm,
 }) => {
   return (
@@ -12,8 +11,6 @@ export const ShowAddresses = ({
       <AddressCart
         addresses={addresses}
         setAddresses={setAddresses}
-        msg={msg}
-        setMsg={setMsg}
         setShowAddressForm={setShowAddressForm}
       />
     </div>

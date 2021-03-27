@@ -5,17 +5,15 @@ export const AddressCart = ({
   addresses,
   setAddresses,
   setShowAddressForm,
-  msg,
-  setMsg,
 }) => {
   const handleEdit = (address) => {
-    // console.log({ address });
+    console.log({ address });
     <AddressForm
-      //   addresses={addresses}
-      //   setAddresses={setAddresses}
-      //   setShowAddressForm={setShowAddressForm}
-      //   msg={msg}
-      //   setMsg={setMsg}
+      // addresses={addresses}
+      // setAddresses={setAddresses}
+      // setShowAddressForm={setShowAddressForm}
+      // msg={msg}
+      // setMsg={setMsg}
       editAdd={address}
     />;
     setShowAddressForm(true);
@@ -36,13 +34,24 @@ export const AddressCart = ({
   return (
     <div className='container'>
       {addresses.map(
-        ({ id, name, phonenumber, zipcode, address, city, state, country }) => {
+        ({
+          id,
+          name,
+          phonenumber,
+          zipcode,
+          address,
+          city,
+          state,
+          country,
+          addresstype,
+        }) => {
           return (
             <div className='card' key={id}>
               <div className='card-info'>
                 <h3>{name}</h3>
                 <div className='card-content'>
                   <small>{phonenumber}</small>
+                  <small>{addresstype}</small>
                   <small>{zipcode}</small>
                 </div>
                 <h4 className='card-info-para'>{address}</h4>

@@ -14,9 +14,9 @@ export const AddressForm = ({
   const [zipCode, setZipCode] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-
+  const [state, setState] = useState("Andhra Pradesh");
+  const [country, setCountry] = useState("India");
+  const [addressType, setAddressType] = useState("Home");
   const states = [
     "Andhra Pradesh",
     "Assam",
@@ -32,7 +32,9 @@ export const AddressForm = ({
 
   const countries = ["India"];
 
-  console.log(editAdd);
+  const addressTypes = ["Home", "Office"];
+
+  console.log({ editAdd });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,6 +61,7 @@ export const AddressForm = ({
           city: city,
           state: state,
           country: country,
+          addresstype: addressType,
         },
       });
 
@@ -70,9 +73,10 @@ export const AddressForm = ({
       setZipCode("");
       setAddress("");
       setCity("");
-      setState("");
-      setCountry("");
+      setState("Andhra Pradesh");
+      setCountry("India");
       setShowAddressForm(false);
+      setAddressType("Home");
     } catch (error) {
       setMsg("Couldn't save data to the Server");
     } finally {
@@ -86,8 +90,9 @@ export const AddressForm = ({
     setZipCode("");
     setAddress("");
     setCity("");
-    setState("");
-    setCountry("");
+    setState("Andhra Pradesh");
+    setCountry("India");
+    setAddressType("Home");
   };
 
   return (
@@ -177,6 +182,24 @@ export const AddressForm = ({
                 return <option value={cntry}>{cntry}</option>;
               })}
             </select>
+
+            <div className='radio'>
+              <p>Select the Address Type:</p>
+              {addressTypes.map((addType) => {
+                return (
+                  <label className='input-radio-label'>
+                    <input
+                      className='input-radio'
+                      type='radio'
+                      value={addType}
+                      checked={addressType === addType}
+                      onChange={(e) => setAddressType(e.target.value)}
+                    />
+                    {addType}
+                  </label>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -192,3 +215,14 @@ export const AddressForm = ({
     </div>
   );
 };
+
+// update(e) {
+//         e.preventDefault();
+//         const employee = {
+//             name: this.state.name,
+//             age: this.state.age,
+//             salary: this.state.salary,
+//         }
+//         axios.put('http://dummy.restapiexample.com/api/v1/update/{this.state.id}', employee)
+//         .then(res => console.log(res.data));
+//     }
