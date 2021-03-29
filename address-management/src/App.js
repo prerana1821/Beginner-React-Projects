@@ -24,11 +24,13 @@ function App() {
     })();
   }, []);
 
+  console.log({ addresses });
+
   return (
     <div className='App'>
       <h1>Address Management</h1>
       <button
-        className='btn green'
+        className='btn primary'
         onClick={() => setShowAddressForm(!showAddressForm)}
       >
         {showAddressForm ? "Go Back" : "Add a new Address"}
@@ -46,7 +48,7 @@ function App() {
         addresses={addresses}
         setAddresses={setAddresses}
         msg={msg}
-        setShowAddressForm={setShowAddressForm}
+        setMsg={setMsg}
       />
     </div>
   );

@@ -1,22 +1,33 @@
 import axios from "axios";
 import { useState } from "react";
 
+const defaultAddress = {
+  name: "",
+  phonenumber: "",
+  zipcode: "",
+  address: "",
+  city: "",
+  state: "Andhra Pradesh",
+  country: "India",
+  addressType: "Home",
+};
+
 export const AddressForm = ({
   addresses,
   setAddresses,
   setShowAddressForm,
   msg,
   setMsg,
-  editAdd,
+  editAdd = defaultAddress,
 }) => {
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("Andhra Pradesh");
-  const [country, setCountry] = useState("India");
-  const [addressType, setAddressType] = useState("Home");
+  const [name, setName] = useState(editAdd.name);
+  const [phonenumber, setPhoneNumber] = useState(editAdd.phonenumber);
+  const [zipcode, setZipCode] = useState(editAdd.zipcode);
+  const [address, setAddress] = useState(editAdd.address);
+  const [city, setCity] = useState(editAdd.city);
+  const [state, setState] = useState(editAdd.state);
+  const [country, setCountry] = useState(editAdd.country);
+  const [addressType, setAddressType] = useState(editAdd.addressType);
   const states = [
     "Andhra Pradesh",
     "Assam",
@@ -30,22 +41,53 @@ export const AddressForm = ({
     "Sikkim",
   ];
 
+  let editMode = false;
+
   const countries = ["India"];
 
   const addressTypes = ["Home", "Office"];
 
-  console.log({ editAdd });
+  if (editAdd.name.length !== 0) {
+    editMode = true;
+  }
+
+  console.log({ addresses });
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    // try {
+    //   setMsg("Saving data to Server");
+    const response = await axios.put(`api/addresses/${editAdd.id}`, {
+      address: {
+        name: name,
+        phonenumber: phonenumber,
+        zipcode: zipcode,
+        address: address,
+        city: city,
+        state: state,
+        country: country,
+        addresstype: addressType,
+      },
+    });
+    if (response.status === 200) {
+      console.log({ addresses });
+      // setAddresses(
+      //   addresses.map((address) => {
+      //     return address.id === response.data.address.id
+      //       ? response.data.address
+      //       : address;
+      //   })
+      // );
+    }
+    // } catch (error) {
+    //   setMsg("Couldn't save data to the Server");
+    // } finally {
+    //   setMsg("");
+    // }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // console.log(name);
-    // console.log(phoneNumber);
-    // console.log(zipCode);
-    // console.log(address);
-    // console.log(city);
-    // console.log(state);
-    // console.log(country);
 
     try {
       setMsg("Saving data to Server");
@@ -55,8 +97,8 @@ export const AddressForm = ({
       } = await axios.post("api/addresses", {
         address: {
           name: name,
-          phonenumber: phoneNumber,
-          zipcode: zipCode,
+          phonenumber: phonenumber,
+          zipcode: zipcode,
           address: address,
           city: city,
           state: state,
@@ -99,15 +141,19 @@ export const AddressForm = ({
     <div>
       <h2>Address Form</h2>
 
-      <h3>{msg}</h3>
+      <h4>{msg}</h4>
 
-      <form onSubmit={handleSubmit} className='address-form'>
+      <form
+        onSubmit={editMode ? handleEdit : handleSubmit}
+        className='address-form'
+      >
         <div className='flex-input'>
           <div className='input'>
             <input
               type='text'
               className='input-txt'
               required
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <span className='flt-label'>Your Name</span>
@@ -118,7 +164,7 @@ export const AddressForm = ({
               type='number'
               className='input-txt'
               required
-              value={phoneNumber}
+              value={phonenumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
             <span className='flt-label'>Phone Number</span>
@@ -131,7 +177,7 @@ export const AddressForm = ({
               type='number'
               className='input-txt'
               required
-              value={zipCode}
+              value={zipcode}
               onChange={(e) => setZipCode(e.target.value)}
             />
             <span className='flt-label'>Zip Code</span>
@@ -191,7 +237,7 @@ export const AddressForm = ({
                     <input
                       className='input-radio'
                       type='radio'
-                      value={addType}
+                      value={addressType}
                       checked={addressType === addType}
                       onChange={(e) => setAddressType(e.target.value)}
                     />
@@ -215,14 +261,3 @@ export const AddressForm = ({
     </div>
   );
 };
-
-// update(e) {
-//         e.preventDefault();
-//         const employee = {
-//             name: this.state.name,
-//             age: this.state.age,
-//             salary: this.state.salary,
-//         }
-//         axios.put('http://dummy.restapiexample.com/api/v1/update/{this.state.id}', employee)
-//         .then(res => console.log(res.data));
-//     }
