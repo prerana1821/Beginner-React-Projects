@@ -10,8 +10,6 @@ function App() {
         <Route path='/' element={<Join />} />
         <Route path='/chat' element={<Chat />} />
       </Routes>
-      {/* <Join />
-      <Chat /> */}
     </div>
   );
 }

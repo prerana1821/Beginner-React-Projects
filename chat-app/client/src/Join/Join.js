@@ -1,13 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { useRoom } from "../RoomProvider/RoomProvider";
 
 export const Join = () => {
-  // const { state, dispatch } = useRoom();
-
-  // console.log(state);
-
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
 
